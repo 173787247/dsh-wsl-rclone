@@ -1,0 +1,7 @@
+- insert:
+    - id: dsh-wsl-rclone
+      name: dsh-wsl-rclone
+      config:
+        enabled: true
+        timeoutMs: 60000
+        allowedRemotes: []
