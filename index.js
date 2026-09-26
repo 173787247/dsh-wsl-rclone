@@ -26,10 +26,10 @@ export function apply(ctx, config = {}) {
 
   ctx.tools.register({
     name: "rclone_status",
-    description: "Whether rclone is on PATH; echo allowedRemotes config.",
+    description: "Whether rclone is on PATH; version, remote count, allowedRemotes.",
     parameters: { type: "object", additionalProperties: false, properties: {} },
-    output: { schema: { type: "object", additionalProperties: true }, render: (_a, v) => [{ type: "text", text: JSON.stringify(v) }] },
-    timeoutMs: 5_000,
+    output: { schema: { type: "object", additionalProperties: true }, render: (_a, v) => [{ type: "text", text: JSON.stringify(v, null, 2) }] },
+    timeoutMs: 10_000,
     isConcurrencySafe: () => true,
     async execute() {
       return { ...(await rcloneStatus()), allowedRemotes };
